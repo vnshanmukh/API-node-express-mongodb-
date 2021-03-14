@@ -2,7 +2,7 @@ const express = require("express");
 const router = require("express").Router();
 const SUB = require("../models/sub");
 
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const subs = await SUB.find();
     if (!subs) throw Error("No items");
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const sub = await SUB.findByIdAndDelete(req.params.id);
     if (!subs) throw Error("No sub found");
